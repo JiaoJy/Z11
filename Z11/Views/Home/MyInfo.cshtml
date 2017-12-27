@@ -1,0 +1,134 @@
+﻿@model Z11.Models.UserInfo
+@{
+    ViewBag.Title = "我的信息";
+    //String[] abilities = Model.skill.Split(',');
+    //String[] avalue = Model.skillvalue.Split(',');
+    String abilities = Model.skill;
+    String avalue = Model.skillvalue;
+
+}
+@Styles.Render("~/Content/css/myinfo.css")
+<!-- 定义简历的头部 //-->
+<div class="row">
+    <div class="col-md-12" style="height:50px;"></div>
+</div>
+<div class="container">
+    <div class="row cvheader">
+        <div class="col-lg-7 col-md-7 col-xs-12">
+            <!--  添加颜色//-->
+            <h1 class="text-primary">@Model.name</h1>
+            <!--  添加图标 //-->
+            <p><span class="glyphicon glyphicon-paperclip"></span> @Model.job &amp;&amp; 计算机行业</p>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-xs-12">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-4 col-xs-4">
+                    <a href="@Url.Action("EditInfo1","Home",new { id="EditInfo1",selectid=int.Parse(Session["userId"].ToString())})"><p id="contact" class="address text-center" data-original-title="" title=""><span class="glyphicon glyphicon-pencil"></span></p></a>
+                </div>
+
+                <div class="col-lg-8 col-md-8 col-xs-8">
+                    <p><span class="glyphicon glyphicon-envelope"></span> @Model.email</p>
+                    <p><span class="glyphicon glyphicon-earphone"></span> @Model.telPhone</p>
+                    <p><span class="glyphicon glyphicon-road"></span> @Model.address</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-xs-12">
+            <p>
+                <!-- 这里定义图片为响应式，并且添加圆角效果，以便保证图片在不同设备上都可以完美显示 //-->
+                <img data-toggle="tooltip" data-placement="left" id="avatar" title="" class="img-responsive img-rounded" src="@Model.imgUrl" alt="" data-original-title="我是Terry">
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- 定义简历的主体部分 //-->
+
+<div class="container">
+    <div class="row cvbody">
+
+        <!-- 这里定义两个区域，布局定义如下：//-->
+
+        <div class="col-lg-6 col-md-6 col-xs-12">
+
+            <div class="row">
+                <div class="cbox green">
+                    <h4>个人介绍</h4>
+                    <p>
+                       @Model.introduction
+                    </p>
+                </div>
+                <div class="cbox red">
+                    <h4>个人技能</h4>
+                    <p>
+                        <!-- 这里使用Bootstrap3的组件添加技能 //-->
+                        @*@abilities[0]*@
+                        @abilities
+                    </p><div class="progress">
+                        <div class="progress-bar progress-bar-success" style="width:@(avalue)%"></div>
+                    </div>
+
+                    @*@abilities[1]*@
+                    @abilities
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-primary" style="width:@(avalue)%"></div>
+                    </div>
+
+                    @*@abilities[2]*@
+                    @abilities
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-info" style="width:@(avalue)%"></div>
+                    </div>
+
+                    <p></p>
+                </div>
+               
+            </div>
+
+        </div>
+
+        <!-- 为了清楚的分割两个区域，这里我们添加了一个空白区域，或者也可以在CSS中定义Margin实现//-->
+        <div class="col-lg-1 col-md-1 col-xs-12"></div>
+
+        <div class="col-lg-5 col-md-5 col-xs-12">
+
+            <div class="row">
+                <div class="bbox">
+                    <h4>教育背景</h4>
+                    <p>
+                        @Model.background
+                    </p>
+                </div>
+                <div class="bbox">
+                    <h4>工作经验</h4>
+                    <p>
+                        @Model.workExperience
+                    </p>
+                </div>
+                <div class="bbox">
+                    <h4>个人爱好</h4>
+                    <p>
+                        <span class="glyphicon glyphicon-tree-deciduous"></span> 骑马
+                        <span class="glyphicon glyphicon-plane"></span> 旅游
+                    </p><p><span class="glyphicon glyphicon-cutlery"></span> 美食</p>
+                    <p><span class="glyphicon glyphicon-music"></span> 音乐</p>
+                    <p></p>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<!-- 定义简历页底 //-->
+<div class="container">
+    <div class="row"><div class="footer text-center">关注-微博</div></div>
+</div>
+
+

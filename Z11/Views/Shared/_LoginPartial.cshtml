@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNet.Identity
+@{ 
+    string content = "后台管理系统，";
+}
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("你好，" + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">注销</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @try {@Html.ActionLink(content + Session["username"].ToString(), "MyInfo1", "Home", routeValues: null, htmlAttributes: new { id = "loginLink" }) }catch {@Html.ActionLink("LoginOut", "Home") }
+
+        </li>
+        <li style="margin-top:12px;margin-left:-2px;">
+            <div style="width:20px;height:20px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret" ></span>
+            </div>
+            <span class="sr-only">Toggle Dropdown</span>
+
+            <ul class="dropdown-menu">
+                <li onclick="window.location.href='@Url.Action("LoginOut","Home")'"><a href="#">注销</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#"  data-toggle="modal" data-target="#myModel">更改密码</a></li>
+            </ul>
+        </li>
+        
+    </ul>
+}

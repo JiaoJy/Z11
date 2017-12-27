@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 我的 ASP.NET 应用程序</title>
+    <link href="~/content/semantic/semantic.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/content/semantic/starStyle.css" />
+    <script type="text/javascript" src="~/content/semantic/starScript.js"></script>
+    <script type="text/javascript" src="~/content/semantic/jquery.min.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery-ui")
+    @Scripts.Render("~/bundles/jquery-unobtrusive-ajax")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <style>
+        *.{
+            background:;
+        }
+        .foot{
+                    
+            margin:auto;  
+               
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("首页展示", "PreMain", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Ajax.ActionLink("主页", "Index", "Home",null,null,null)</li>
+                    <li>@Ajax.ActionLink("我的信息", "MyInfo1", "Home", null, null, null)</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+   
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <div class="modal-footer center">
+            <footer>
+                <div class="footerNav">
+                    <a rel="nofollow" href="">关于我们</a> | <a rel="nofollow" href="">服务条款</a> | <a rel="nofollow" href="">免责声明</a> | <a rel="nofollow" href="">网站地图</a> | <a rel="nofollow" href="">联系我们</a>
+                </div>
+                <div class="copyRight">
+                    <p>&copy; @DateTime.Now.Year - 计算机与信息工程学院计算机系</p>
+                    Copyright ©2017jiaojiy.cn 版权所有
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="myModel" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">密码更改</h4>
+                </div>
+                <form class="form-inline" action="@Url.Action("ChangePwd","Home")" method="post">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputName2">旧密码</label>
+                                            <input type="text" name="old"class="form-control" id="exampleInputName1">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputName2">新密码</label>
+                                            <input type="text" name="new" class="form-control" id="exampleInputName2" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputName2">确认新密码</label>
+                                            <input type="text" name="rnew" class="form-control" id="exampleInputName3">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-2"></div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-sm confirm">确认</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+           
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    
+    <script>
+        $(document).ready(function () {
+            $(".confirm").click(function () {
+                var old = $("#exampleInputName1").val();
+                var newp = $("#exampleInputName2").val();
+                var rnew = $("#exampleInputName3").val();
+                var Formdata = {old:old,newp:newp,rnew:rnew};
+                $.ajax({
+                 
+                    url: '@Url.Action("ChangePwd","Home")',
+                    type:"post",
+                    data: Formdata,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data == 0) {
+                            alert("旧密码错误请重新输入！");
+                        } else if (data == 1) {
+                            alert("新密码前后不一致！");
+                        } else if (data == 2) {
+                            alert("修改成功！");
+                            window.location.href = "@Url.Action("Login","Home")";
+                        }
+                    },
+                    error: function () {
+                        alert("出错了");
+                    }
+                    
+
+                });
+            })
+        })
+    </script>
+</body>
+</html>

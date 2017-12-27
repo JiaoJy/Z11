@@ -1,0 +1,140 @@
+﻿@model Z11.Models.uInfoandText
+@{
+    ViewBag.Title = Model.userinfo.name+"的信息";
+    String abilities = Model.userinfo.skill;
+    String avalue = Model.userinfo.skillvalue;
+
+}
+@Styles.Render("~/Content/css/myinfo.css")
+<div class="row">
+    <div class="col-md-12" style="height:50px;"></div>
+</div>
+<div class="container">
+    <div class="row cvheader">
+        <div class="col-lg-7 col-md-7 col-xs-12">
+            <!--  添加颜色//-->
+            <h1 class="text-primary">@Model.userinfo.name</h1>
+            <!--  添加图标 //-->
+            <p><span class="glyphicon glyphicon-paperclip"></span> @Model.userinfo.job &amp;&amp; 计算机行业</p>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-xs-12">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-4 col-xs-4">
+                    @*<a href="@Url.Action("EditInfo1","Home",new { id="EditInfo1",selectid=int.Parse(Session["userId"].ToString())})"><p id="contact" class="address text-center" data-original-title="" title=""><span class="glyphicon glyphicon-pencil"></span></p></a>*@
+                </div>
+
+                <div class="col-lg-8 col-md-8 col-xs-8">
+                    <p><span class="glyphicon glyphicon-envelope"></span> @Model.userinfo.email</p>
+                    <p><span class="glyphicon glyphicon-earphone"></span> @Model.userinfo.telPhone</p>
+                    <p><span class="glyphicon glyphicon-road"></span> @Model.userinfo.address</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-xs-12">
+            <p>
+                <!-- 这里定义图片为响应式，并且添加圆角效果，以便保证图片在不同设备上都可以完美显示 //-->
+                <img data-toggle="tooltip" data-placement="left" id="avatar" title="" class="img-responsive img-rounded" src="@Model.userinfo.imgUrl" alt="" data-original-title="我是Terry">
+            </p>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="row clearfix">
+                <div class="col-md-8 column">
+                    <ul class="nav nav-pills">
+                        <li class="active">
+                            <a href="#"> <span class="badge pull-right">@Model.mycount</span>文章数目</a>
+                        </li>
+                    </ul>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    题目
+                                </th>
+                                <th>
+                                    内容
+                                </th>
+                                <th>
+                                    作者
+                                </th>
+                                <th>
+                                    状态
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.texts)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.Title
+                                    </td>
+                                    <td>
+                                        @if (@item.Content.Length > 7)
+                                        {
+                                            string str = item.Content.Substring(0, 7) + "……";
+                                            @str
+                                        }
+                                        else
+                                        {
+                                            @item.Content
+                                        }
+
+                                    </td>
+                                    <td>
+                                        @Model.userinfo.name
+                                    </td>
+                                    <td>
+                                        仅供本人修改
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4 column">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            个人介绍
+                        </dt>
+                        <dd>
+                            @Model.userinfo.introduction
+                        </dd>
+                        <dt>
+                            工作经验
+                        </dt>
+                        <dd>
+                            @Model.userinfo.workExperience
+                        </dd>
+                        <dt>
+                            技术
+                        </dt>
+                        <dd>
+                            @Model.userinfo.skill
+                        </dd>
+                        <dd>
+                            Donec id elit non mi porta gravida at eget metus.
+                        </dd>
+                        <dt>
+                            爱好
+                        </dt>
+                        <dd>
+                            @Model.userinfo.hobies
+                        </dd>
+                    </dl>
+                    <div class="progress active">
+                        <div class="progress-bar progress-success" style="width:@(Model.mycount*100/Model.allcount)%">
+                            文章贡献量
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

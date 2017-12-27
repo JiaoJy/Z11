@@ -1,0 +1,94 @@
+﻿@model IQueryable<Z11.Models.Texts> 
+@{
+    ViewBag.Title = "一起去旅行";
+    Layout = "~/Views/Shared/_LayoutPre.cshtml";
+}
+<blockquote style="margin-top:5%;">
+    <p>
+        七月的意大利夜风清凉，钻进睡袋，也不觉得冷。仰望星空，那璀璨的天河，是最温暖的棉被。
+    </p> <small>《背包十年》</small>
+</blockquote>
+<div class="carousel slide" id="carousel-144204">
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-144204" data-slide-to="0">
+        </li>
+        <li data-target="#carousel-144204" data-slide-to="1">
+        </li>
+        <li class="active" data-target="#carousel-144204" data-slide-to="2">
+        </li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item">
+            <img alt="" src="~/files/imgs/timg2.jpg" />"
+            <div class="carousel-caption">
+                <h4>
+                    First Thumbnail label
+                </h4>
+                <p>
+                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            @*<img alt="" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/1600/500/sports/2/default.jpg" />*@
+            <img alt="" src="~/files/imgs/timg4.jpg" />
+            <div class="carousel-caption">
+                <h4>
+                   美食节
+                </h4>
+                <p>
+                    在海拔580米的雪山上，来自世界各地著名餐厅的7位厨师和俄罗斯本土的4位大厨齐聚一堂
+                </p>
+            </div>
+        </div>
+        <div class="item active">
+            @*<img alt="" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/1600/500/sports/3/default.jpg" />*@
+            <img alt="" src="~/files/imgs/timg3.jpg" />
+            <div class="carousel-caption">
+                <h4>
+                    Third Thumbnail label
+                </h4>
+                <p>
+                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                </p>
+            </div>
+        </div>
+    </div> <a class="left carousel-control" href="#carousel-144204" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-144204" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
+<div class="panel-group" id="panel-977742">
+@foreach (var item in Model)
+{
+    <div class="panel panel-default text" id="@item.Id">
+        <div class="panel-heading">
+            <a class="panel-title" href="#panel-element-849961" data-toggle="collapse" data-parent="#panel-977742">@item.Title</a>
+            <h6 class="panel-title pull-right" style="display:inline;">2017-12-21</h6>
+        </div>
+        <div class="panel-collapse in" id="panel-element-849961" style="cursor:pointer;">
+            <div class="panel-body">
+                @{
+                    if (item.Content.Length > 15)
+                    {
+                        string str = item.Content.Substring(0, 15) + "……";
+                        @str
+                    }
+                    else
+                    {
+                        @item.Content
+                    }
+                }
+                @*@item.Content*@
+                
+            </div>
+        </div>
+    </div>
+}
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".text").click(function () {
+            var id = $(this).attr("id");
+            //alert(id);
+            window.location.href = "/Home/PreList/PreList?selectid="+id;
+        })
+    });
+</script>

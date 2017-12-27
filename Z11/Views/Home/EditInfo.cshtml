@@ -1,0 +1,159 @@
+﻿@model Z11.Models.UserInfo
+@{
+    ViewBag.Title = "EditInfo";
+    String []abilities = Model.skill.Split(',');
+    String[] avalue = Model.skillvalue.Split(',');
+
+}
+@Styles.Render("~/Content/css/myinfo.css")
+ <!-- 定义简历的头部 //-->
+<form  id="myform" action="@Url.Action("EditSubmit","Home")" method="post" enctype="multipart/form-data">
+
+    <div class="container">
+        <div class="row cvheader">
+            <div class="col-lg-7 col-md-7 col-xs-12">
+                <!--  添加颜色//-->
+                <h1 class="text-primary"><input type="text" name="name" placeholder="姓名" value="@Model.name" /></h1>
+                <!--  添加图标 //-->
+                <p><span class="glyphicon glyphicon-paperclip"></span> <input name="job"  type="text" placeholder="职位" value="@Model.job" /></p>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-xs-12">
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <p id="save" class="text-center btn btn-primary" data-original-title="" title="">保存</p>
+                    </div>
+
+                    <div class="col-lg-8 col-md-8 col-xs-8">
+                        <p><span class="glyphicon glyphicon-envelope"></span> <input name="email" type="text" placeholder="邮箱" value="@Model.email" /></p>
+                        <p><span class="glyphicon glyphicon-earphone"></span> <input name="phone"  type="text" placeholder="电话" value="@Model.telPhone" /></p>
+                        <p><span class="glyphicon glyphicon-road"></span> <input name="address" type="text" placeholder="住址" value="@Model.address" /></p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-xs-12">
+                <p>
+                    <!-- 这里定义图片为响应式，并且添加圆角效果，以便保证图片在不同设备上都可以完美显示 //-->
+                    <img data-toggle="tooltip" data-placement="left" id="avatar" title="" class="img-responsive img-rounded" src="@Model.imgUrl" alt="" data-original-title="我是Terry">
+                </p>
+                <p><input type="file" name="fileup"/></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 定义简历的主体部分 //-->
+
+    <div class="container">
+        <div class="row cvbody">
+
+            <!-- 这里定义两个区域，布局定义如下：//-->
+
+            <div class="col-lg-6 col-md-6 col-xs-12">
+
+                <div class="row">
+                    <div class="cbox green">
+                        <h4>个人介绍</h4>
+                        <p>
+                            <textarea name="introduction" class="form-control" rows="6">
+                                @Model.introduction
+                            </textarea>
+
+                        </p>
+                    </div>
+                    <div class="cbox red">
+                        <h4>个人技能</h4>
+                        <p>
+                            <!-- 这里使用Bootstrap3的组件添加技能 //-->
+
+                            <div class="input-group">
+                                <input type="text" id="s1" class="form-control" placeholder="HTML/CSS/JAVAScript" value="@abilities[0]" aria-describedby="basic-addon2">
+                                <span class="input-group-addon" id="basic-addon2"><input type="text" id="v1" placeholder="能力强度，最强为10" value="@avalue[0]" style="color:black;" /></span>
+                            </div>
+
+                            <div style="height:5px;"></div>
+                            <div class="input-group">
+                                <input type="text" id="s2" class="form-control" placeholder="JAVA" value="@abilities[1]" aria-describedby="basic-addon2">
+                                <span class="input-group-addon" id="basic-addon2"><input type="text" id="v2" placeholder="能力强度，最强为10" value="@avalue[1]" style="color:black;" /></span>
+                            </div>
+                            <div style="height:5px;"></div>
+                            <div class="input-group">
+                                <input type="text" id="s3" class="form-control" placeholder="数据库" value="@abilities[2]" aria-describedby="basic-addon2">
+                                <span class="input-group-addon" id="basic-addon2"><input type="text" id="v3" placeholder="能力强度，最强为10" value="@avalue[2]" style="color:black;" /></span>
+                            </div>
+                            <input name="skill" type="hidden" value="@Model.skill" id="skill" />
+                            <input name="skillvalue" type="hidden" value="@Model.skillvalue" id="skillvalue" />
+                            <input name="ssid" value="@Model.userId" type="hidden"/>
+                        <p></p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- 为了清楚的分割两个区域，这里我们添加了一个空白区域，或者也可以在CSS中定义Margin实现//-->
+            <div class="col-lg-1 col-md-1 col-xs-12"></div>
+
+            <div class="col-lg-5 col-md-5 col-xs-12">
+
+                <div class="row">
+                    <div class="bbox">
+                        <h4>教育背景</h4>
+                        <p>
+                            <textarea name="back"  class="form-control" rows="8">
+                               @Model.background
+                            </textarea>
+                        </p>
+                    </div>
+                    <div class="bbox">
+                        <h4>工作经验</h4>
+                        <p>
+                            <textarea name="workExperience" class="form-control" rows="8">
+                               @Model.workExperience
+                            </textarea>
+                        </p>
+                    </div>
+                    <div class="bbox">
+
+                        <h4>个人爱好</h4>
+                        <p>
+
+                            <span class="glyphicon glyphicon-tree-deciduous"></span> 骑马
+                            <span class="glyphicon glyphicon-plane"></span> 旅游
+                        </p><p><span class="glyphicon glyphicon-cutlery"></span> 美食</p>
+                        <p><span class="glyphicon glyphicon-music"></span> 音乐</p>
+                        <p></p>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</form>
+<!-- 定义简历页底 //-->
+<div class="container">
+    <div class="row"><div class="footer text-center">关注-微博</div></div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#save").click(function () {
+           
+            var s1 = $("#s1").val();
+            var v1 = $("#v1").val();
+            var s2 = $("#s2").val();
+            var v2 = $("#v2").val();
+            var s3 = $("#s3").val();
+            var v3 = $("#v3").val();
+            var skill = s1 + "," + s2 + "," + s3;
+            var skillvalue = v1 + "," + v2 + "," + v3;
+            $("#skill").val(skill);
+            $("#skillvalue").val(skillvalue);
+            //alert(skill + "," + skillvalue);
+            $("#myform").submit();
+        })
+    });
+</script>

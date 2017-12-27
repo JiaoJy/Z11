@@ -1,0 +1,277 @@
+.person:hover img{
+	opacity: 0.6;
+}
+#CONTENTED div {
+	
+	overflow: hidden;
+	
+   /* background: yellow;*/
+	
+}
+.box1:hover{
+	left: 20px;
+}
+.box1 h1{
+	position: absolute;
+	color: white;
+	left: 36px;
+	top: 50px;
+	font-size: 25px;
+	transition: left 2s; 
+}
+.box1 h2{
+	position: absolute;
+	background: blueviolet;
+	font-size: 20px;
+	transition: left 0.3s;
+}
+.box1:hover{
+	left: 15px;
+}
+.box1:hover h1{
+	/*也是派生选择器 选找到前面的那个选择器对应的元素的状态 然后再去修改其子元素的样式 也可以成为伪类派生*/
+	left: 50px;
+}
+.box1:hover img{
+	/*透明度*/
+	opacity: 0.5;
+}
+.box1 .shake{
+    left: -150px;
+    top: 150px;;
+}
+.box1 .black{
+    left: 650px;
+    top: 210px;
+}
+.box1 .blook{
+    left: -150px;
+    top: 270px;
+}
+.box1:hover .shake{
+	left: 80px;
+}
+.box1:hover .black{
+	left: 80px;
+}
+.box1:hover .blook{
+	left: 80px;
+}
+/*设置box2*/
+.box2:hover img{
+  transform: rotate(5deg);
+  transition: transform 2s !important;
+}
+.box2 h1{
+    color: white;
+    font-size: 25px;
+    position:absolute;
+    left: 20px;
+    top: 50px;
+}
+.box2 h2{
+    position: absolute;
+    background: white;
+    font-size: 18px;
+
+}
+.box2 .birth{
+    left: -300px;
+    top: 180px;
+    transition: left 0.2s;
+}
+.box2 .h{
+    left: -300px;
+    top: 240px;
+    transition: left 0.4s;
+}
+.box2 .w{
+    left:-300px;
+    top:300px ;
+    transition: left 0.6s;
+}
+.box2:hover .birth{
+    left: 20px;
+}
+.box2:hover .h{
+    left: 20px;;
+}
+.box2:hover .w{
+    left:20px;
+}
+/*设置box3*/
+#h3{
+    position: absolute;
+    left: 50px;
+    top: -80px;
+    font-size: 25px;
+    color: white;
+    transition: top 2s;
+}
+#p3{
+    position: absolute;
+    left: 80px;
+    top: 60%;
+    font-size: 15px;
+    transition: top 2s,opacity 2s;
+    opacity:0;
+}
+.box3:hover #h3{
+    top: 80px;
+}
+.box3:hover #p3{
+    top: 50%;
+    opacity: 1;
+}
+/*设置box4*/
+/*.box4 .blueSBox{
+	
+	width: 3000px;
+	height: 3000px;
+	background: springgreen;
+	position: absolute;
+	left: 140px;
+	/*top: 360px;*/
+	/*top: 570px;*/
+	/*transform: rotate(60deg);*/
+	/*transition: transform 4s,top 4s;
+}
+.box4:hover .blueSBox{
+	top: 420px;
+	transform: rotate(-30deg);
+}*/
+#h4{
+	position: absolute;
+	left: 50px;
+	top: 80px;
+    color: white;
+	font-size: 200%;
+    transition: left 2s;
+}
+#p4{
+	position: absolute;
+	left: 50px;
+	top: 240px;
+    opacity: 0;
+    transition: top 1.5s,opacity 1.5s;
+}
+.box4:hover #h4{
+    left: 80px;
+}
+.box4:hover #p4{
+    top: 140px;
+    opacity: 1;
+}
+.box4 .borderBox{
+	position: absolute;
+    left: 30px;
+    top: -350px;
+    width: 80%;
+    height: 60%;
+	border: solid 3px black;
+    transform-origin: 0 0;
+    /*transform: rotate(180deg);*/
+   transition:top 2s,transform 2s;
+
+}
+.box4:hover .borderBox{
+	z-index:100;
+    transform: rotate(360deg);
+    top: 50px;
+}
+/*设置box5*/
+.box5 h2{
+    position: absolute;
+    top: 30%;
+    left: 33%;
+    transition: transform 3s;
+}
+.box5:hover h2{
+     transform: rotate(330deg);
+ }
+
+.box5:hover img{
+   transform: scale(1.25,1.25);
+}
+/*设置box6*/
+.box8 img{
+    transition: transform 2s !important;
+}
+.box8:hover img{
+    transform:scale(0.9,0.9);
+    /*height: 450px !important;*/
+}
+/*设置box7*/
+.box7 img{
+	
+	transition: all 3s;
+	transform: rotate(0deg) scale(1);
+}
+
+.box7:hover img{
+	transform: rotate(10deg) scale(1.1);
+}
+
+.box7 .top{
+	position: absolute;
+	left: 125px;
+	top: 70px;
+	width: 0;
+	height: 200px;
+	border-top: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
+	
+}
+
+.box7:hover .top{
+	width: 240px;
+	transition: all 3s; 
+}
+
+.box7 .left{
+	position: absolute;
+	left: 140px;
+	top: 55px;
+	width: 200px;
+	height: 0px;
+	 border-left: 2px solid #ccc;
+	 border-right: 2px solid #ccc;
+}
+
+.box7:hover .left{
+	height: 240px;
+	transition: all 3s; 
+}
+
+.box6 .blueBox{
+	width: 600px;
+	height: 500px;
+	position:absolute;
+	left: -10px;
+	top: 700px;
+	z-index:99;
+	background: blueviolet;
+	transform: rotate(90deg);
+    transition: top 2s ,transform 2s;
+}
+.box6:hover .blueBox{
+	transform: rotate(70deg);
+	/*top:0;*/
+	top:500px;
+}
+
+#musicControl{
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	height:66px;
+	width:66px;
+	/*将设计好的动画添加给音乐控制器*/
+	animation: musicAnimation 1s infinite;
+}
+
+/*给音乐控制器设计动画*/
+@keyframes musicAnimation{
+	from{transform: rotate(0deg);}
+	to{transform: rotate(360deg);}
+}

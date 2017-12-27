@@ -1,0 +1,191 @@
+﻿@model IQueryable<Z11.Models.UserInfo> 
+@{
+    ViewBag.Title = "管理员信息";
+    int count = 0;
+}
+@*<div id="CONTENTED" class="ui column grid">
+    <div class="row">
+        <div class="col-md-12" style="height:10px;"></div>
+    </div>
+
+    <div class="row">
+       
+       
+                @foreach (var item in Model)
+                {
+                    count++;
+                    if (count % 8 == 1)
+                    {
+                        <div class="col-md-3 box5 person" id="@item.userId" style="cursor:pointer;">
+                            <div class="ui fluid card">
+                                <h2>详细信息</h2>
+                                <div class="image">
+                                    <img src="@item.imgUrl">
+                                </div>
+                                <div class="content">
+                                    <div class="header">@item.name</div>
+                                    <div class="meta">
+                                        <a>旅游摄影师</a>
+                                    </div>
+                                    <div class="description"><span class="glyphicon glyphicon-earphone"></span>@item.telPhone</div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else if (count % 8 == 2)
+                    {
+                        <div class="col-md-3 box2 person" id="@item.userId" style="cursor:pointer;">
+                            <div class="ui fluid card" >
+                                <div class="image">
+                                    <img src="@item.imgUrl">
+                                </div>
+                                <h1>详细信息</h1>
+                                <div class="content">
+                                    <div class="header">@item.name</div>
+                                    <div class="meta">
+                                        <a>旅游摄影师</a>
+                                    </div>
+                                    <div class="description"><span class="glyphicon glyphicon-earphone"></span>@item.telPhone </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                    else if (count % 8 == 3)
+                    {
+                        <div class="col-md-3 box3 person" id="@item.userId" style="cursor:pointer;">
+                            <div class="ui fluid card">
+                                <div class="image">
+                                    <img src="@item.imgUrl">
+                                </div>
+                                <div class="content">
+                                    <div class="header">@item.name</div>
+                                    <div class="meta">
+                                        <a>旅游摄影师</a>
+                                    </div>
+                                    <div id="h1">详细信息</div>
+                                    <div class="description"><span class="glyphicon glyphicon-earphone"></span>@item.telPhone </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else if (count % 8 == 4)
+                    {
+                        <div class="col-md-3 box4 person" id="@item.userId" style="cursor:pointer;">
+                            <div class="ui fluid card">
+                                <div class="image">
+                                    <img src="@item.imgUrl">
+                                </div>
+
+                                <div class="content">
+                                    <div class="header">@item.name</div>
+                                    <div class="meta">
+                                        <a>旅游摄影师</a>
+                                    </div>
+                                    <div id="h1"> @item.name</div>
+                                    <div class="description"><span class="glyphicon glyphicon-earphone"></span>@item.telPhone </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                    else if(count%8==5)
+                    {
+                        <div class="col-md-3 box7 person" id="@item.userId" style="cursor:pointer;">
+                            <div class="ui fluid card">
+                                <div class="top"></div>
+                                <div class="left"></div>
+                                <div class="image">
+                                    <img src="~/files/imgs/1.png">
+                                </div>
+                                <div class="content">
+                                    <div class="header">@item.name</div>
+                                    <div class="meta">
+                                        <a>旅游摄影师</a>
+                                    </div>
+                                    <div class="description"><span class="glyphicon glyphicon-earphone"></span>@item.telPhone </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else if (count % 8 == 6)
+                    {
+                        <div class="col-md-3 box8 person" id="@item.userId" style="cursor:pointer;">
+                            <div class="ui fluid card">
+                                <div class="image">
+                                    <img src="@item.imgUrl">
+                                </div>
+                                <div class="content">
+                                    <div class="header">@item.name</div>
+                                    <div class="meta">
+                                        <a>旅游摄影师</a>
+                                    </div>
+                                    <div class="description"><span class="glyphicon glyphicon-earphone"></span>@item.telPhone </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-3 box6 person" id="@item.userId" style="cursor:pointer;">
+                            <div class="ui fluid card">
+                                <div class="blueBox"></div>
+
+                                <div class="image">
+                                    <img src="@item.imgUrl">
+                                </div>
+                                <div class="content">
+                                    <div class="header">@item.name</div>
+                                    <div class="meta">
+                                        <a>旅游摄影师</a>
+                                    </div>
+                                    <div class="description"><span class="glyphicon glyphicon-earphone"></span>@item.telPhone  </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }         
+    </div>
+</div>*@
+
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="row">
+                
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-3" >
+                            <div class="thumbnail">
+                                <img alt="300x200" src="@item.imgUrl" />
+                                <div class="caption">
+                                    <h3>
+                                        @item.name
+                                    </h3>
+                                    <p>
+                                        职业：@item.job
+                                    </p>
+                                    <p>
+                                        @Ajax.ActionLink("详细信息", "PersonInfo", "Home", new { id = item.userId }, null, new { @class = "btn btn-primary" })
+                                        @*<a class="btn btn-primary" href="#">详细信息</a>*@
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        count++;
+                    }
+            </div>
+        </div>
+    </div>
+</div>
+@*<script>
+    $(document).ready(function () {
+        $(".person").click(function () {
+            var id = $(this).attr("id");
+           // alert(id);
+            window.location.href = "/Home/PersonInfo/PersonInfo?selectid="+id;
+        })
+    });
+   
+</script>*@

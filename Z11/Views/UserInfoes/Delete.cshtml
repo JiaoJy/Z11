@@ -1,0 +1,120 @@
+﻿@model Z11.Models.UserInfo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>UserInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.userId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.job)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.job)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.introduction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.introduction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.background)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.background)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.workExperience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.workExperience)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.skill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.skill)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.skillvalue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.skillvalue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hobies)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hobies)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

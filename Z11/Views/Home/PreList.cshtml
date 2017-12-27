@@ -1,0 +1,62 @@
+﻿@model Z11.Models.Texts
+@{
+    ViewBag.Title = "一起去旅行";
+    Layout = "~/Views/Shared/_LayoutPre.cshtml";
+}
+            <div class="row clearfix" >
+                <div class="col-md-8 column" style="margin-top:10%;">
+                    <h3 class="text-center">
+                        @Model.Title
+                    </h3>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            DateTime
+                        </dt>
+                        <dd>
+                            2017-12-21 10:23
+                        </dd>
+                        <dt>
+                            Description lists
+                        </dt>
+                        <dd>
+                            A description list is perfect for defining terms.
+                        </dd>
+                        <dt>
+                            Euismod
+                        </dt>
+                        <dd>
+                            Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
+                        </dd>
+                        <dd>
+                            Donec id elit non mi porta gravida at eget metus.
+                        </dd>
+                        <dt>
+                            Malesuada porta
+                        </dt>
+                        <dd>
+                            Etiam porta sem malesuada magna mollis euismod.
+                        </dd>
+                        <dt>
+                            Felis euismod semper eget lacinia
+                        </dt>
+                        <dd>
+                            Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+                        </dd>
+                    </dl>
+                    <p class="text-center lead">
+                        @Html.Raw(Model.Content)
+                    </p>
+                </div>
+                <div class="col-md-4 column" style="margin-top:6%">
+                    <blockquote>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                        </p> <small>Someone famous <cite>Source Title</cite></small>
+                    </blockquote><img class="img-thumbnail" style="margin-left:5%;" alt="140x140" width="50%" src="~/files/imgs/li.png" />
+                    <blockquote>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                        </p> <small>Someone famous <cite>Source Title</cite></small>
+                    </blockquote>
+                </div>
+            </div>
